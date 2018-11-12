@@ -1,0 +1,29 @@
+\section{Preliminary}
+A HIN is a special kind of information network, which contains either multiple types of objects or multiple types of links~\citep{sun2012mining}. In order to integrate widely existing attribute information of objects, we further extend HIN to attributed heterogeneous information network (AHIN) as follows.
+\begin{myDef}
+\textbf{Attributed Heterogeneous Information Network} (AHIN). An AHIN is denoted as $\mathcal{G} = \{\mathcal{V}, \mathcal{E}, \mathbf{X}\}$ consisting of an object set $\mathcal{V}$, a link set $\mathcal{E}$ and an attribute information matrix\footnote{ In our work, we discretize the original attributes to the same dimension. } $\mathbf{X} \in \mathbb{R}^{|\mathcal{V}| \times k}$. An AHIN is also associated with a node type mapping function $\phi: \mathcal{V} \rightarrow \mathcal{A}$ and a link type mapping function $\psi: \mathcal{E} \rightarrow \mathcal{R}$. $\mathcal{A}$ and $\mathcal{R}$ denote the sets of predefined object and link types, where $|\mathcal{A}| + |\mathcal{R}| > 2$.
+\end{myDef}
+
+In AHINs, two objects can be connected via different semantic paths, which are called meta-paths.
+\begin{myDef}
+\textbf{Meta-path}~\citep{sun2011pathsim}. A meta-path $\rho$ is defined as a path in the form of $A_1 \xrightarrow{R_1} A_2 \xrightarrow{R_2} \cdots \xrightarrow{R_l} A_{l+1}$ (abbreviated as $A_1A_2 \cdots A_{l+1}$), which describes a composite relation $R = R_1 \circ R_2 \circ \cdots \circ R_l$ between object $A_1$ and $A_{l+1}$, where $\circ$ denotes the composition operator on relations.
+\end{myDef}
+
+\begin{exmp}
+As shown in Fig.~\ref{fig-hin}, we construct an AHIN to model the scenario of credit payment service in which cash-out fraud usually happens. It consists of multiple types of objects(\ie User ($U$), Merchant ($M$), Device ($D$)) with rich attributes and relations (\ie fund transfer relation between users and transaction relation between users and merchants). In the AHIN, two users can be connected via multiple meta-paths, \eg ``User-\scriptsize (fund transfer) \normalsize-User'' ($UU$) and ``User-\scriptsize (transaction) \normalsize-Merchant-\scriptsize (transaction)\normalsize -User" ($UMU$). Different meta-path always convey different semantics. For example, the $UU$ path connects users having fund transfer from one to another, while the $UMU$ connects users having transactions with the same merchants. 
+\end{exmp}
+
+As a major technical approach, meta-path based data mining methods have been extensively studied in HINs~\citep{shi2017survey}. Giving a meta-path $\rho$, there exists multiple specific neighbors \wrt each user. This neighbors set can reveal semantics and structure information of users in AHIN. 
+\begin{myDef}
+\textbf{Meta-path based Neighbors}. Giving a user $u$ in an AHIN, the meta-path based neighbors is defined as the set of aggregate neighbors under the given meta-path for the user $u$ in the AHIN.
+\end{myDef}
+
+\begin{exmp}
+Take Fig.~\ref{fig-hin} as an example. Giving the meta-path $UU$, the neighbors of ``Mary" are ``Bob" and ``Tom". Similarly, the neighbors of "Mary" based on meta-path UMU are ``Tom''. Obviously, meta-path based neighbors can exploit different aspects of structure information in AHIN.
+\end{exmp}
+
+Here we model the scenario of credit payment service with an AHIN which can comprehensively integrate rich features and  interaction information. Furthermore, we define the cash-out user detection problem under the AHIN framework as follows. 
+
+\begin{myDef}
+\textbf{Cash-out User Detection Problem under AHIN}. In the cash-out user detection problem, various kinds of objects and their interactions can be modeled as an AHIN $\mathcal{G} = \{\mathcal{V}, \mathcal{E}, \mathbf{X}\}$. In our setting, we focus on detecting cash-out users who are a subset of the node set, denoted as $\mathcal{U} \subset \mathcal{V}$. We assign a label $y_u \in \{0, 1\}$ on each user $u \in \mathcal{U}$ to indicate whether he/she is a cash-out user or not. Given the AHIN $\mathcal{G} = \{\mathcal{V}, \mathcal{E}, \mathbf{X}\}$ and the training set $\mathcal{D} = \{ (u, y_u) \}$, the goal is to predict the cash-out probability $p_{u^t}$ of user $u^t$ in the test set. %Note that the user $u^t$ may never appear in the training set $\mathcal{D}$.
+\end{myDef}

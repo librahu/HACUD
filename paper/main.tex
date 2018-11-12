@@ -1,0 +1,78 @@
+\def\year{2019}\relax
+%File: formatting-instruction.tex
+\documentclass[letterpaper]{article} %DO NOT CHANGE THIS
+\usepackage{aaai19}  %Required
+\usepackage{times}  %Required
+\usepackage{helvet}  %Required
+\usepackage{courier}  %Required
+\usepackage{url}  %Required
+\usepackage{graphicx}  %Required
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{natbib}
+\usepackage{xspace}
+\usepackage{multirow}
+\usepackage{graphicx}
+\usepackage[tight,footnotesize]{subfigure}
+%\usepackage{floatrow}
+\usepackage{bm}
+
+%\floatsetup[table]{capposition=top}
+%\newfloatcommand{capbtabbox}{table}[][\FBwidth]
+\frenchspacing  %Required
+\setlength{\pdfpagewidth}{8.5in}  %Required
+\setlength{\pdfpageheight}{11in}  %Required
+
+\newtheorem{myDef}{Definition}
+\newtheorem{exmp}{Example}
+\newcommand{\paratitle}[1]{\vspace{1.5ex}\noindent\textbf{#1}}
+\newcommand{\ie}{\emph{i.e.,}\xspace}
+\newcommand{\aka}{\emph{a.k.a.,}\xspace}
+\newcommand{\eg}{\emph{e.g.,}\xspace}
+\newcommand{\etal}{\emph{et al.}\xspace}
+\newcommand{\wrt}{\emph{w.r.t.}\xspace}
+\newcommand{\ignore}[1]{}
+
+%PDF Info Is Required:
+  \pdfinfo{
+/Title (2019 Formatting Instructions for Authors Using LaTeX)
+/Author (AAAI Press Staff)}
+\setcounter{secnumdepth}{0}
+
+
+
+
+\begin{document}
+% The file aaai.sty is the style file for AAAI Press
+% proceedings, working notes, and technical reports.
+%
+\title{Cash-out User Detection based on Attributed Heterogeneous Information Network with a Hierarchical Attention Mechanism}
+
+\author{Binbin Hu$^1$, Zhiqiang Zhang$^2$, Chuan Shi$^1$, Jun Zhou$^2$, Xiaolong Li$^2$,  Yuan Qi$^2$ \\
+  $^1$ Beijing University of Posts and Telecommunications \\
+  $^2$ AI Department, Ant Financial Services Group \\
+  \{hubinbin, shichuan\}@bupt.edu.cn, \{lingyao.zzq, jun.zhoujun, xl.li, yuan.qi\}@antfin.com}
+
+\maketitle
+
+\begin{abstract}
+As one of the major frauds in financial services, cash-out fraud is that users pursue cash gains with illegal or insincere means. Conventional solutions for the cash-out user detection are to perform subtle feature engineering for each user and then apply a classifier, such as GDBT and Neural Network. However, users in financial services have rich interaction relations, which are seldom fully exploited by conventional solutions. In this paper, with the real datasets in Ant Credit Pay of Ant Financial Services Group, we first study the cash-out user detection problem and propose a novel hierarchical attention mechanism based cash-out user detection model, called HACUD. Specifically, we model different types of objects and their rich attributes and interaction relations in the scenario of credit payment service with an Attributed Heterogeneous Information Network (AHIN). The HACUD model enhances feature representation of objects through meta-path based neighbors exploiting different aspects of structure information in AHIN. Furthermore,  a hierarchical attention mechanism is elaborately designed  to model user's preferences towards attributes and meta-paths.
+Experimental results on two real datasets show that the HACUD outperforms the state-of-the-art methods.
+\end{abstract}
+
+\input{sec-intro}
+%\input{sec-data}
+\input{sec-def}
+\input{sec-model}
+\input{sec-exp}
+\input{sec-rel}
+\input{sec-con}
+\input{sec-ack}
+
+%\clearpage
+\bibliography{references}
+\bibliographystyle{aaai}
+
+
+
+\end{document}
